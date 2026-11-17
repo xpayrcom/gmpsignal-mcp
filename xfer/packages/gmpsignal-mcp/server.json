@@ -1,0 +1,48 @@
+{
+    "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+    "name": "io.github.devburaq/gmpsignal-mcp-server",
+    "title": "GMPSignal 40-Actor Enterprise Intelligence Suite",
+    "description": "40 real-time Apify tools for Crypto, Prediction Markets, B2B Enrichment, KYB, Cyber & R&D.",
+    "version": "1.4.1",
+    "websiteUrl": "https://devburaq.github.io/gmpsignal-portal/",
+    "repository": {
+        "url": "https://github.com/devburaq/gmpsignal-mcp-n8n-starter-kit",
+        "source": "github"
+    },
+    "packages": [
+        {
+            "registryType": "npm",
+            "identifier": "@gmpsignal/mcp-server",
+            "version": "1.4.1",
+            "transport": {
+                "type": "stdio"
+            },
+            "environmentVariables": [
+                {
+                    "name": "APIFY_TOKEN",
+                    "description": "Apify API Token used for live Actor executions (optional for offline tool discovery).",
+                    "isRequired": false,
+                    "format": "string",
+                    "isSecret": true
+                }
+            ]
+        },
+        {
+            "registryType": "npm",
+            "identifier": "gmpsignal-mcp",
+            "version": "1.4.1",
+            "transport": {
+                "type": "stdio"
+            },
+            "environmentVariables": [
+                {
+                    "name": "APIFY_TOKEN",
+                    "description": "Apify API Token used for live Actor executions (optional for offline tool discovery).",
+                    "isRequired": false,
+                    "format": "string",
+                    "isSecret": true
+                }
+            ]
+        }
+    ]
+}
