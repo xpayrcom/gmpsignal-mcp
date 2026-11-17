@@ -1,6 +1,6 @@
 {
   "name": "gmpsignal-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official CLI & SDK for GMPSignal 59-Tool Real-Time Intelligence MCP & REST API",
   "type": "module",
   "bin": {

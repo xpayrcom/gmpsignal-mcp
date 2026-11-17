@@ -8,6 +8,16 @@ import readline from 'node:readline';
 const GATEWAY_BASE = (process.env.GMPSIGNAL_BASE_URL || 'https://xpayr.com/gmpsignal').replace(/\/+$/, '');
 const API_KEY = process.env.GMPSIGNAL_API_KEY || '';
 
+(() => {
+    let u;
+    try { u = new URL(GATEWAY_BASE); } catch { console.error('GMPSIGNAL_BASE_URL is not a valid URL'); process.exit(1); }
+    const local = ['localhost', '127.0.0.1', '[::1]'].includes(u.hostname);
+    if (u.protocol !== 'https:' && !(local && u.protocol === 'http:')) {
+        console.error('GMPSIGNAL_BASE_URL must use https://');
+        process.exit(1);
+    }
+})();
+
 if (process.argv.includes('--print-config')) {
     console.log(JSON.stringify({
         mcpServers: {
@@ -15,7 +25,8 @@ if (process.argv.includes('--print-config')) {
                 command: 'npx',
                 args: ['-y', 'gmpsignal-mcp'],
                 env: {
-                    GMPSIGNAL_API_KEY: API_KEY || 'YOUR_X_API_KEY'
+                    // Never echo the real key to stdout (shell history, CI logs, screen shares).
+                    GMPSIGNAL_API_KEY: 'YOUR_X_API_KEY'
                 }
             }
         }
